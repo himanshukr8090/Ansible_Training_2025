@@ -1,0 +1,9 @@
+- hosts: localhost
+  vars:
+    x: 8102050569
+    myname: "Himanshu Kumar Singh"
+  tasks:
+    - debug:
+      # String Interpolation
+      # Jinja Template
+        msg: "hi i am {{ myname }}...My mobile no {{ x }}"

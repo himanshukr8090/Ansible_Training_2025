@@ -1,0 +1,5 @@
+- hosts: all
+  tasks:
+    - package: "name=httpd state=present"
+    - copy: "src=/root/linuxworld/Ansible/index.html dest=/var/www/html/myweb.html"
+    - service: "name=httpd state=started"
