@@ -1,0 +1,26 @@
+- hosts: all
+  vars_files:
+    - "Ansible_var.yml"
+
+  tasks:
+  - package:
+      name: "{{ webPackage }}"
+      state: present
+    register: packageRegister
+    ignore_errors: true
+
+  - debug: 
+      var: packageRegister['failed']
+
+  - package:
+      name: "httpd"
+      state: present
+    when: packageRegister['failed']
+
+  - copy: 
+      content: "I am Himanshu Singh... Learning Ansible"
+      dest: "{{ dest }}/index.html"
+
+  - service: 
+       name: "{{webServer}}"
+       state: "{{ state }}"
