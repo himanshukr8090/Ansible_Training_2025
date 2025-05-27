@@ -1,0 +1,14 @@
+- hosts: all
+  vars:
+    x: 5
+  tasks:
+  - file:
+      path: "/root/himanshu"
+      state: directory
+
+  - copy:
+      dest: "/root/himanshu/mytaxt.txt" 
+      content: "Hi.. I am Himanshu.. \nLearning Copy and File Module of Ansible\n Fron {{ x }} days"
+
+  - debug:
+      msg: "{{ ansible_facts.default_ipv4, ansible_facts.os_family }}"

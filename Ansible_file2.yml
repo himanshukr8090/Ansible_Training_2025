@@ -1,0 +1,14 @@
+- hosts: all
+  tasks:
+  - name: "Web Install in Redhat System"
+    package:
+      name: "httpd"
+      state: present
+    when: ansible_facts.os_family == "RedHat"
+
+  - name: "Web Install in Ubuntu"
+    package:
+      name: "apache2"
+      state: present
+    when: ansible_facts.os_family == "ubuntu"
+
